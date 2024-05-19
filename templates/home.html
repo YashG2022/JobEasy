@@ -1,23 +1,292 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Search Home</title>
+  <style>
+    body, h1, p, ul {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+body {
+  line-height: 1.6;
+  background: #f4f4f4;
+  color: #333;
+}
 
-    <title>Home Page</title>
-  </head>
-  <body>
-    <h1>Home Page</h1>
-    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+}
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+}
+
+.navbar-menu li {
+  margin-left: 20px;
+}
+
+/* .navbar-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  color: #fff;
+} */
+.fancy {
+ background-color: transparent;
+ border: 2px solid #000;
+ border-radius: 0;
+ box-sizing: border-box;
+ color: #fff;
+ cursor: pointer;
+ display: inline-block;
+ float: right;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ margin: 0;
+ outline: none;
+ overflow: visible;
+ padding: 1.25em 2em;
+ position: relative;
+ text-align: center;
+ text-decoration: none;
+ text-transform: none;
+ transition: all 0.3s ease-in-out;
+ user-select: none;
+ font-size: 13px;
+}
+
+.fancy::before {
+ content: " ";
+ width: 1.5625rem;
+ height: 2px;
+ background: black;
+ top: 50%;
+ left: 1.5em;
+ position: absolute;
+ transform: translateY(-50%);
+ transform-origin: center;
+ transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+ font-size: 1.125em;
+ line-height: 1.33333em;
+ padding-left: 2em;
+ display: block;
+ text-align: left;
+ transition: all 0.3s ease-in-out;
+ text-transform: uppercase;
+ text-decoration: none;
+ color: black;
+}
+
+.fancy .top-key {
+ height: 2px;
+ width: 1.5625rem;
+ top: -2px;
+ left: 0.625rem;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+ height: 2px;
+ width: 1.5625rem;
+ right: 1.875rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+ height: 2px;
+ width: 0.625rem;
+ right: 0.625rem;
+ bottom: -2px;
+ position: absolute;
+ background: #e8e8e8;
+ transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+ color: white;
+ background: black;
+}
+
+.fancy:hover::before {
+ width: 0.9375rem;
+ background: white;
+}
+
+.fancy:hover .text {
+ color: white;
+ padding-left: 1.5em;
+}
+
+.fancy:hover .top-key {
+ left: -2px;
+ width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+ .fancy:hover .bottom-key-2 {
+ right: 0;
+ width: 0;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  margin: 20px 0;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  position: relative;
+  min-height: 400px; /* Adjusted height */
+}
+
+.section .content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Ensures child elements stack vertically */
+  align-items: center; /* Centers child elements horizontally */
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Overlay with 50% opacity */
+  z-index: 1;
+}
+
+.section h1 {
+  margin-bottom: 10px;
+  font-size: 36px; /* Increased font size */
+  display: block; /* Ensures it takes full width and stacks vertically */
+}
+
+.section p {
+  font-size: 20px; /* Increased font size */
+  margin-bottom: 20px;
+  display: block; /* Ensures it takes full width and stacks vertically */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="#">JobSearch</a>
+      </div>
+      <ul class="navbar-menu">
+        <li><a class="fancy" href="#find-jobs">
+            <span class="top-key"></span>
+            <span class="text">Find Jobs</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+        </a></li>
+        <li><a class="fancy" href="{% url 'chatbot' %}">
+            <span class="top-key"></span>
+            <span class="text">ChatBot</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+        </a></li>
+        <li><a class="fancy" href="#about-us">
+            <span class="top-key"></span>
+            <span class="text">About Us</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+        </a></li>
+        <li><a class="fancy" href="#our-team">
+            <span class="top-key"></span>
+            <span class="text">Our Team</span>
+            <span class="bottom-key-1"></span>
+            <span class="bottom-key-2"></span>
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="find-jobs" class="section">
+        <div class="content">
+            <h1>Find Your Dream Job</h1>
+            <p>Explore thousands of job listings from top companies.</p>
+        </div>
+    </section>
+    <section id="chatbot" class="section">
+        <div class="content">
+            <h1>ChatBot</h1>
+            <p>Gain some expert advice from our AI Guru.</p>
+        </div>
+    </section>
+    <section id="about-us" class="section">
+      <div class="content">
+        <h1>About Us</h1>
+        <p>Learn more about our mission and values.</p>
+    </div>
+    </section>
+    <section id="our-team" class="section">
+      <div class="content">
+        <h1>Our Team</h1>
+        <p>Meet the people behind JobSearch.</p>
+    </div>
+    </section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.section');
+
+    sections.forEach((section) => {
+      if (section.id === 'find-jobs') {
+    section.style.backgroundImage = "url('/static/JobEasy/findjobbg.png')";
+} else if (section.id === 'chatbot') {
+    section.style.backgroundImage = "url('/static/JobEasy/chatbotbg.png')";
+} else if (section.id === 'about-us') {
+    section.style.backgroundImage = "url('/static/JobEasy/aboutusbg.png')";
+} else if (section.id === 'our-team') {
+    section.style.backgroundImage = "url('/static/JobEasy/ourteambg.png')";
+}
+
+    });
+  });
+  </script>
+</body>
 </html>
