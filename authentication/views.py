@@ -55,3 +55,7 @@ def LoginPage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login')
+
+@login_required(login_url='login')
+def FindJobPage(request):
+    return render(request, 'findjob.html')
