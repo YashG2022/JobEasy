@@ -10,9 +10,7 @@ from django.contrib.auth.decorators import login_required
 def HomePage(request):
     return render(request, 'home.html')
 
-@login_required(login_url='login')
-def chatbot(request):
-    return render(request,'chatbot.html')
+
 def SignupPage(request):
     if request.method == 'POST':
         fname=request.POST.get('firstname')
@@ -56,6 +54,3 @@ def LogoutPage(request):
     logout(request)
     return redirect('login')
 
-@login_required(login_url='login')
-def FindJobPage(request):
-    return render(request, 'findjob.html')

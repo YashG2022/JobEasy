@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8161f136-b0e2-4105-9575-d12bb0dbe075" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/jobfinder/data_getter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/aiml.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/appdev.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/loader.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/softdev.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/uiux.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/JobEasy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JobEasy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobEasy/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/JobEasy/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JobEasy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/JobEasy/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobEasy/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/JobEasy/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/findjob.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/findjob.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +39,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2gYeR74DDwKobiEWFlTu4VrpoLe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,8 +56,16 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yashg\Desktop\Projects\JobEasy\jobfinder" />
       <recent name="C:\Users\yashg\Desktop\Projects\Rajdeep\JobEasy\static\JobEasy" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
