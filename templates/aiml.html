@@ -2,9 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AI/ML Developer Jobs</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 24px;
+            color: #fff;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            width: 220px;
+            height: 270px;
+            border-radius: 8px;
+            background: #212121;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 1em;
+            transition: all 0.5s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ff5a91;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border: 1px solid #ff5a91;
+            box-shadow: 0 0 15px red;
+        }
+
+        .card p {
+            height: 100%;
+            flex: 1;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.5s;
+            background: #212121;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 0;
+        }
+
+        .card p::before {
+            content: attr(data-placeholder);
+            position: absolute;
+            color: #ff568e;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: opacity .5s;
+        }
+
+        .card p:hover::before {
+            opacity: 0;
+        }
+
+        .card p span {
+            min-width: 14em;
+            padding: .5em;
+            text-align: center;
+            transform: rotate(-90deg);
+            transition: all .5s;
+            text-transform: uppercase;
+            color: #ff568e;
+            letter-spacing: .1em;
+            opacity: 0;
+        }
+
+        .card p:hover {
+            flex: 4;
+        }
+
+        .card p:hover span {
+            transform: rotate(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 90%;
+            }
+
+            .card p span {
+                min-width: 10em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <h1>AI/ML Developer Jobs</h1>
 
+    <div class="container">
+        {% for job in jobs %}
+        <div class="card">
+            <p data-placeholder="Job Title"><span>{{ job.job_title }}</span></p>
+            <p data-placeholder="Company Name"><span>{{ job.company_name }}</span></p>
+            <p data-placeholder="Job Details"><span>{{ job.job_details }}</span></p>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

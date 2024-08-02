@@ -13,7 +13,7 @@ def selenium_init():
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     service = Service(
-        r"C:\Users\yashg\Desktop\Projects\test_folder\chromedriver-win64\chromedriver.exe")  # Update with your ChromeDriver path
+        r"C:\Users\Asus\Downloads\chromedriver.exe")  # Update with your ChromeDriver path
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
