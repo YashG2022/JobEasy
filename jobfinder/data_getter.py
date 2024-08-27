@@ -5,6 +5,9 @@ from selenium.webdriver.chrome.options import Options
 from jobfinder.models import JobListing
 import pandas as pd
 import time
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def selenium_init():
@@ -12,14 +15,17 @@ def selenium_init():
     # chrome_options.add_argument("--headless")  # Run in headless mode
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    # chrome_options.add_argument('--window-size=1920,1080')
     service = Service(
-        r"C:\Users\yashg\Desktop\Projects\chromedriver-win64\chromedriver.exe")  # Update with your ChromeDriver path
+        r"C:\Users\yashg\Desktop\Projects\JobEasy\chromedriver-win64\chromedriver.exe")  # Update with your ChromeDriver path
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
 def scrape_naukri_jobs(driver,url):
     driver.get(url)
     jobs = []
+    # WebDriverWait(driver, 10).until(
+    # EC.presence_of_element_located((By.ID, 'element_id')))
     time.sleep(5)
     # Wait for the job listings to load
     job_tuple_element = driver.find_elements(By.CLASS_NAME, 'sjw__tuple')
