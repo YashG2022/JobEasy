@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} default {% endblock %}</title>
+    <style>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            /* Make the header fixed */
+            top: 0;
+            /* Align it to the top */
+            left: 0;
+            /* Align it to the left */
+            width: 100%;
+            /* Ensure it spans the full width */
+            z-index: 1000;
+            /* Ensure it stays above other content */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar-logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Roboto Mono', monospace;
+            /* Ensures the same font style */
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar-menu li {
+            margin-left: 20px;
+        }
+
+        .fancy {
+            background-color: #333;
+            border: 2px solid black;
+            border-radius: 0;
+            box-sizing: border-box;
+            color: white;
+            /* Set initial text color to white */
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0.75em 1.5em;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            text-transform: none;
+            transition: all 0.3s ease-in-out;
+            user-select: none;
+            font-size: 13px;
+            font-family: 'Roboto Mono', monospace;
+            /* Ensures the same font style */
+        }
+
+        .fancy::before {
+            content: "";
+            width: 1.5625rem;
+            height: 2px;
+            background: black;
+            top: 50%;
+            left: 1.5em;
+            position: absolute;
+            transform: translateY(-50%);
+            transform-origin: center;
+            transition: background 0.3s linear, width 0.3s linear;
+        }
+
+        .fancy .text {
+            font-size: 1.125em;
+            line-height: 1.33333em;
+            padding-left: 2em;
+            display: block;
+            text-align: left;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            /* Set initial text color to white */
+        }
+
+        .fancy .top-key {
+            height: 2px;
+            width: 1.5625rem;
+            top: -2px;
+            left: 0.625rem;
+            position: absolute;
+            background: #e8e8e8;
+            transition: width 0.5s ease-out, left 0.3s ease-out;
+        }
+
+        .fancy .bottom-key-1 {
+            height: 2px;
+            width: 1.5625rem;
+            right: 1.875rem;
+            bottom: -2px;
+            position: absolute;
+            background: #e8e8e8;
+            transition: width 0.5s ease-out, right 0.3s ease-out;
+        }
+
+        .fancy .bottom-key-2 {
+            height: 2px;
+            width: 0.625rem;
+            right: 0.625rem;
+            bottom: -2px;
+            position: absolute;
+            background: #e8e8e8;
+            transition: width 0.5s ease-out, right 0.3s ease-out;
+        }
+
+        .fancy:hover {
+            color: black;
+            /* Change text color to black on hover */
+            background: black;
+            /* Ensure the background is black on hover */
+        }
+
+        .fancy:hover::before {
+            width: 0.9375rem;
+            background: white;
+        }
+
+        .fancy:hover .text {
+            color: white;
+            /* Change text color to black on hover */
+            padding-left: 1.5em;
+        }
+
+        .fancy:hover .top-key {
+            left: -2px;
+            width: 0px;
+        }
+
+        .fancy:hover .bottom-key-1,
+        .fancy:hover .bottom-key-2 {
+            right: 0;
+            width: 0;
+        }
+
+        body {
+            margin-top: 60px;
+            /* Add margin to the top to ensure content is not hidden behind the fixed header */
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            /* Fixed positioning */
+            bottom: 0;
+            /* Stays at the bottom of the viewport */
+            left: 0;
+            /* Aligns to the left edge */
+        }
+    </style>
+    {% block css %} {% endblock %}
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <a href="#">JobSearch</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a class="fancy" href="{% url 'jobloader' %}">
+                        <span class="top-key"></span>
+                        <span class="text">Job Loader (Admin Only)</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a></li>
+                <li><a class="fancy" href="{% url 'findjob' %}">
+                        <span class="top-key"></span>
+                        <span class="text">Find Jobs</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a></li>
+                <li><a class="fancy" href="{% url 'chatbot' %}">
+                        <span class="top-key"></span>
+                        <span class="text">ChatBot</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a></li>
+                <li><a class="fancy" href="{% url 'aboutus' %}">
+                        <span class="top-key"></span>
+                        <span class="text">About Us</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a></li>
+                <li><a class="fancy" href="{% url 'contactus' %}">
+                        <span class="top-key"></span>
+                        <span class="text">Contact Us</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a></li>
+            </ul>
+        </nav>
+
+    </header>
+    {% block body %} {% endblock %}
+
+    <footer>
+        <p>&copy; 2024 JobSearch. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

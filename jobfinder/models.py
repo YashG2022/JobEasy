@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 
 class JobListing(models.Model):
     job_title = models.CharField(max_length=255)

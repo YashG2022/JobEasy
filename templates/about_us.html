@@ -1,324 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'navbar.html' %}
+{% block css %}
+<style>
+body,
+html {
+margin: 0;
+padding: 0;
+font-family: 'Roboto Mono', monospace;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+width: 100%;
+height: 100%;
+--color: #a748f5;
+background: linear-gradient(95deg, var(--color) 25%, transparent 25%) -50px 0,
+linear-gradient(-15deg, var(--color) 25%, transparent 25%) -50px 0,
+linear-gradient(25deg, transparent 75%, var(--color) 75%) -50px 0,
+linear-gradient(-45deg, transparent 75%, var(--color) 75%) -50px 0,
+linear-gradient(-15deg, transparent 75%, var(--color) 75%) -50px 0;
+background-color: #b669fd;
+background-size: 40px 40px;
+padding-top: 7vh;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Job Finder</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto Mono', monospace;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            width: 100%;
-            height: 100%;
-            --s: 150px;
-            /* control the size */
-            --c1: #ffdcc7;
-            --c2: #f9a3a0;
-            --c3: #fef2e8;
-            --c4: #c9dbcf;
+.container {
+background: rgba(255, 255, 255, 0.35);
+background: rgba(255, 255, 255, 0.5);
+box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.18);
+max-width: 1200px;
+margin: 5vh auto;
+padding: 20px;
+flex: 1;
+color: black;
+/* Ensures the container takes up all the space available, pushing the footer down */
+}
 
-            background: conic-gradient(from 45deg at 75% 75%,
-                    var(--c3) 90deg,
-                    var(--c1) 0 180deg,
-                    #0000 0),
-                conic-gradient(from -45deg at 25% 25%, var(--c3) 90deg, #0000 0),
-                conic-gradient(from -45deg at 50% 100%, #0000 180deg, var(--c3) 0),
-                conic-gradient(from -45deg,
-                    var(--c1) 90deg,
-                    var(--c2) 0 225deg,
-                    var(--c4) 0);
-            background-size: var(--s) var(--s);
-        }
+h1,
+h2 {
+color: #000;
+font-weight: bold;
+/* Solid black for headings and bold */
+}
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
+p {
+line-height: 1.6;
+/* Solid black for text */
+margin-bottom: 20px;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
+ul li {
+color: #000;
+/* Solid black for list items */
+}
 
-        .navbar-logo a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
+</style>
 
-        .navbar-menu {
-            list-style: none;
-            display: flex;
-        }
+{% endblock %}
 
-        .navbar-menu li {
-            margin-left: 20px;
-        }
+{% block body %}
+<div class="container">
+    <h1>Welcome to JobSearch</h1>
+    <p>At JobSearch, we are dedicated to bridging the gap between talented professionals and innovative tech
+        companies. Our platform is designed specifically for the technology sector, offering a comprehensive job
+        search experience tailored to the needs of both job seekers and employers.</p>
 
-        .fancy {
-            background-color: #333;
-            border: 2px solid black;
-            border-radius: 0;
-            box-sizing: border-box;
-            color: black;
-            cursor: pointer;
-            display: inline-block;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin: 0;
-            padding: 0.75em 1.5em;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            text-transform: none;
-            transition: all 0.3s ease-in-out;
-            user-select: none;
-            font-size: 13px;
-        }
+    <h2>Our Services</h2>
+    <p><strong>Tech Job Listings</strong><br>
+        Explore a wide range of job opportunities in the technology industry. From software development and data
+        science to UX/UI design and AI/ML engineering, our curated listings connect you with top companies looking
+        for your skills.</p>
 
-        .fancy::before {
-            content: "";
-            width: 1.5625rem;
-            height: 2px;
-            background: black;
-            top: 50%;
-            left: 1.5em;
-            position: absolute;
-            transform: translateY(-50%);
-            transform-origin: center;
-            transition: background 0.3s linear, width 0.3s linear;
-        }
+    <p><strong>Job Counselling Chatbot</strong><br>
+        Navigating the job market can be challenging. Our intelligent job counselling chatbot is here to assist you
+        every step of the way. Whether you need help refining your resume, preparing for interviews, or
+        understanding industry trends, our chatbot provides personalized guidance to enhance your job search
+        journey.</p>
 
-        .fancy .text {
-            font-size: 1.125em;
-            line-height: 1.33333em;
-            padding-left: 2em;
-            display: block;
-            text-align: left;
-            transition: all 0.3s ease-in-out;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: black;
-        }
+    <h2>Our Mission</h2>
+    <p>Our mission is to empower tech professionals by providing them with the tools and resources they need to
+        succeed in their careers. We aim to create a seamless and efficient job search process, enabling users to
+        find opportunities that align with their skills and aspirations.</p>
 
-        .fancy .top-key {
-            height: 2px;
-            width: 1.5625rem;
-            top: -2px;
-            left: 0.625rem;
-            position: absolute;
-            background: #e8e8e8;
-            transition: width 0.5s ease-out, left 0.3s ease-out;
-        }
+    <h2>Why Choose JobSearch?</h2>
+    <ul>
+        <li><strong>Specialized Focus</strong><br>
+            We concentrate exclusively on the tech industry, ensuring that our job listings and resources are
+            relevant and up-to-date with the latest industry demands.</li>
+        <li><strong>Personalized Assistance</strong><br>
+            Our job counselling chatbot offers tailored advice and support, helping you make informed decisions and
+            improve your job search strategies.</li>
+        <li><strong>Community and Support</strong><br>
+            Join a community of like-minded professionals and access a wealth of knowledge and support to advance
+            your career.</li>
+    </ul>
+</div>
 
-        .fancy .bottom-key-1 {
-            height: 2px;
-            width: 1.5625rem;
-            right: 1.875rem;
-            bottom: -2px;
-            position: absolute;
-            background: #e8e8e8;
-            transition: width 0.5s ease-out, right 0.3s ease-out;
-        }
 
-        .fancy .bottom-key-2 {
-            height: 2px;
-            width: 0.625rem;
-            right: 0.625rem;
-            bottom: -2px;
-            position: absolute;
-            background: #e8e8e8;
-            transition: width 0.5s ease-out, right 0.3s ease-out;
-        }
-
-        .fancy:hover {
-            color: white;
-            background: black;
-        }
-
-        .fancy:hover::before {
-            width: 0.9375rem;
-            background: white;
-        }
-
-        .fancy:hover .text {
-            color: white;
-            padding-left: 1.5em;
-        }
-
-        .fancy:hover .top-key {
-            left: -2px;
-            width: 0px;
-        }
-
-        .fancy:hover .bottom-key-1,
-        .fancy:hover .bottom-key-2 {
-            right: 0;
-            width: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            flex: 1;
-            /* Ensures the container takes up all the space available, pushing the footer down */
-        }
-
-        h1,
-        h2 {
-            color: #000;
-            font-weight: bold;
-            /* Solid black for headings and bold */
-        }
-
-        p {
-            line-height: 1.6;
-            color: #000;
-            /* Solid black for text */
-            margin-bottom: 20px;
-        }
-
-        ul li {
-            color: #000;
-            /* Solid black for list items */
-        }
-
-        .team {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .team-member {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 10px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .team-member img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
-
-        .team-member h3 {
-            color: #0073e6;
-            margin: 10px 0;
-        }
-
-        .team-member p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        footer {
-            background-color: #0073e6;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            bottom: 0;
-            position: relative;
-            /* Remove fixed positioning */
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="navbar-logo">
-                <a href="#">JobSearch</a>
-            </div>
-            <ul class="navbar-menu">
-                <li><a class="fancy" href="{% url 'findjob' %}">
-                        <span class="top-key"></span>
-                        <span class="text">Find Jobs</span>
-                        <span class="bottom-key-1"></span>
-                        <span class="bottom-key-2"></span>
-                    </a></li>
-                <li><a class="fancy" href="{% url 'chatbot' %}">
-                        <span class="top-key"></span>
-                        <span class="text">ChatBot</span>
-                        <span class="bottom-key-1"></span>
-                        <span class="bottom-key-2"></span>
-                    </a></li>
-                <li><a class="fancy" href="#about-us">
-                        <span class="top-key"></span>
-                        <span class="text">About Us</span>
-                        <span class="bottom-key-1"></span>
-                        <span class="bottom-key-2"></span>
-                    </a></li>
-                <li><a class="fancy" href="#our-team">
-                        <span class="top-key"></span>
-                        <span class="text">Our Team</span>
-                        <span class="bottom-key-1"></span>
-                        <span class="bottom-key-2"></span>
-                    </a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <h1>Welcome to JobSearch</h1>
-        <p>At JobSearch, we are dedicated to bridging the gap between talented professionals and innovative tech
-            companies. Our platform is designed specifically for the technology sector, offering a comprehensive job
-            search experience tailored to the needs of both job seekers and employers.</p>
-
-        <h2>Our Services</h2>
-        <p><strong>Tech Job Listings</strong><br>
-            Explore a wide range of job opportunities in the technology industry. From software development and data
-            science to UX/UI design and AI/ML engineering, our curated listings connect you with top companies looking
-            for your skills.</p>
-
-        <p><strong>Job Counselling Chatbot</strong><br>
-            Navigating the job market can be challenging. Our intelligent job counselling chatbot is here to assist you
-            every step of the way. Whether you need help refining your resume, preparing for interviews, or
-            understanding industry trends, our chatbot provides personalized guidance to enhance your job search
-            journey.</p>
-
-        <h2>Our Mission</h2>
-        <p>Our mission is to empower tech professionals by providing them with the tools and resources they need to
-            succeed in their careers. We aim to create a seamless and efficient job search process, enabling users to
-            find opportunities that align with their skills and aspirations.</p>
-
-        <h2>Why Choose JobSearch?</h2>
-        <ul>
-            <li><strong>Specialized Focus</strong><br>
-                We concentrate exclusively on the tech industry, ensuring that our job listings and resources are
-                relevant and up-to-date with the latest industry demands.</li>
-            <li><strong>Personalized Assistance</strong><br>
-                Our job counselling chatbot offers tailored advice and support, helping you make informed decisions and
-                improve your job search strategies.</li>
-            <li><strong>Community and Support</strong><br>
-                Join a community of like-minded professionals and access a wealth of knowledge and support to advance
-                your career.</li>
-        </ul>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Job Finder. All Rights Reserved.</p>
-    </footer>
-</body>
-
-</html>
+{% endblock %}
