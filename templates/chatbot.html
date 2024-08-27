@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chatbot</title>
 </head>
 <body>
+    <h1>Chatbot</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="question">Ask a question:</label><br>
+        <input type="text" id="question" name="question" required><br><br>
+        <input type="submit" value="Ask">
+    </form>
 
+    <h2>Previous Conversations:</h2>
+    {% if chats %}
+        <ul>
+            {% for chat in chats %}
+                <li>
+                    <strong>Question:</strong> {{ chat.question }}<br>
+                    <strong>Answer:</strong> {{ chat.answer }}<br>
+                    <small>Asked on: {{ chat.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No conversations yet.</p>
+    {% endif %}
 </body>
 </html>

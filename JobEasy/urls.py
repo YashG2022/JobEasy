@@ -3,6 +3,7 @@ from django.urls import path
 from authentication import views as authviews
 from jobfinder import views as finderviews
 from . import views as JobEasy
+from chatbot import views as chatbotviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',authviews.SignupPage,name='signup'),
@@ -18,7 +19,7 @@ urlpatterns = [
     path('gdloader/',finderviews.gdloader,name='gdloader'),
     path('appdevloader/',finderviews.appdevloader,name='appdevloader'),
     path('aimlloader/',finderviews.aimlloader,name='aimlloader'),
-    path('chatbot',JobEasy.chatbot,name='chatbot'),
+    path('chatbot',chatbotviews.chatbot,name='chatbot'),
     path('login/',authviews.LoginPage,name='login'),
     path('home/',authviews.HomePage,name='home'),
     path('logout/',authviews.LogoutPage,name='logout'),
