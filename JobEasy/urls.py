@@ -18,6 +18,7 @@ urlpatterns = [
     path('gdloader/',finderviews.gdloader,name='gdloader'),
     path('appdevloader/',finderviews.appdevloader,name='appdevloader'),
     path('aimlloader/',finderviews.aimlloader,name='aimlloader'),
+    path('aboutus/',JobEasy.aboutus,name='aboutus'),
     path('chatbot',JobEasy.chatbot,name='chatbot'),
     path('login/',authviews.LoginPage,name='login'),
     path('home/',authviews.HomePage,name='home'),
