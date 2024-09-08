@@ -6,45 +6,45 @@ from django.http import HttpResponseForbidden
 from jobfinder.models import JobListing
 
 
-def admin_required(view_func):
-    decorated_view_func = user_passes_test(
-        lambda user: user.is_superuser,
-        login_url='/admin/login/'
-    )(view_func)
-    return decorated_view_func
+# def admin_required(view_func):
+#     decorated_view_func = user_passes_test(
+#         lambda user: user.is_superuser,
+#         login_url='/admin/login/'
+#     )(view_func)
+#     return decorated_view_func
 
-@admin_required
-def jobloader(request):
-    # Your logic here
-    return render(request, 'loader.html')
-
-
-@admin_required
-def softdevloader(request):
-    jobs("Software Developer")
-    # return render(request, 'softdev.html', {'jobs': job_listings})
-    return render(request, 'loader.html')
+# @admin_required
+# def jobloader(request):
+#     # Your logic here
+#     return render(request, 'loader.html')
 
 
-@admin_required
-def uiuxloader(request):
-    jobs("UI UX")
-    return render(request, 'loader.html')
+# @admin_required
+# def softdevloader(request):
+#     jobs("Software Developer")
+#     # return render(request, 'softdev.html', {'jobs': job_listings})
+#     return render(request, 'loader.html')
 
-@admin_required
-def gdloader(request):
-    jobs("Graphic Designer")
-    return render(request, 'loader.html')
 
-@admin_required
-def appdevloader(request):
-    jobs("App Developer")
-    return render(request, 'loader.html')
+# @admin_required
+# def uiuxloader(request):
+#     jobs("UI UX")
+#     return render(request, 'loader.html')
 
-@admin_required
-def aimlloader(request):
-    jobs("AI ML")
-    return render(request, 'loader.html')
+# @admin_required
+# def gdloader(request):
+#     jobs("Graphic Designer")
+#     return render(request, 'loader.html')
+
+# @admin_required
+# def appdevloader(request):
+#     jobs("App Developer")
+#     return render(request, 'loader.html')
+
+# @admin_required
+# def aimlloader(request):
+#     jobs("AI ML")
+#     return render(request, 'loader.html')
 
 @login_required(login_url='login')
 def softdev(request):

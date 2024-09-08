@@ -157,8 +157,22 @@
             width: 0;
         }
 
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            flex: 1;
+            /* Allows the main content to take up available space */
+        }
+
         body {
             margin-top: 60px;
+            display: flex;
+            flex-direction: column;
             /* Add margin to the top to ensure content is not hidden behind the fixed header */
         }
 
@@ -187,12 +201,6 @@
                 <a href="#">JobSearch</a>
             </div>
             <ul class="navbar-menu">
-                <li><a class="fancy" href="{% url 'jobloader' %}">
-                        <span class="top-key"></span>
-                        <span class="text">Job Loader (Admin Only)</span>
-                        <span class="bottom-key-1"></span>
-                        <span class="bottom-key-2"></span>
-                    </a></li>
                 <li><a class="fancy" href="{% url 'findjob' %}">
                         <span class="top-key"></span>
                         <span class="text">Find Jobs</span>
@@ -214,6 +222,12 @@
                 <li><a class="fancy" href="{% url 'contactus' %}">
                         <span class="top-key"></span>
                         <span class="text">Contact Us</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </a></li>
+                <li><a class="fancy" href="{% url 'contactus' %}">
+                        <span class="top-key"></span>
+                        <span class="text">Log Out</span>
                         <span class="bottom-key-1"></span>
                         <span class="bottom-key-2"></span>
                     </a></li>

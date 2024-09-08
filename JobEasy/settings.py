@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import dj_database_url
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,8 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "authentication",
-    "jobfinder",
-    "chatbot"
+    "chatbot",
+    "jobfinder.apps.JobfinderConfig"
 ]
 
 MIDDLEWARE = [
@@ -76,12 +77,15 @@ WSGI_APPLICATION = "JobEasy.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+new="postgresql://postgres:diNimDcjwrsIUxnfLckvemGCikMQFoEg@autorack.proxy.rlwy.net:50753/railway"
+database_url=os.environ.get("DATABASES",new)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

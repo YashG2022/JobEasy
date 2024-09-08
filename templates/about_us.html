@@ -21,13 +21,15 @@ background-color: #b669fd;
 background-size: 40px 40px;
 padding-top: 7vh;
 }
-
+body{
+overflow-x: hidden;
+}
 .container {
 background: rgba(255, 255, 255, 0.35);
 background: rgba(255, 255, 255, 0.5);
 box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-backdrop-filter: blur(14px);
--webkit-backdrop-filter: blur(14px);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
 border-radius: 10px;
 border: 1px solid rgba(255, 255, 255, 0.18);
 max-width: 1200px;
@@ -66,7 +68,8 @@ color: #000;
     <p>At JobSearch, we are dedicated to bridging the gap between talented professionals and innovative tech
         companies. Our platform is designed specifically for the technology sector, offering a comprehensive job
         search experience tailored to the needs of both job seekers and employers.</p>
-
+</div>
+<div class="container">
     <h2>Our Services</h2>
     <p><strong>Tech Job Listings</strong><br>
         Explore a wide range of job opportunities in the technology industry. From software development and data
@@ -78,12 +81,14 @@ color: #000;
         every step of the way. Whether you need help refining your resume, preparing for interviews, or
         understanding industry trends, our chatbot provides personalized guidance to enhance your job search
         journey.</p>
-
+</div>
+<div class="container">
     <h2>Our Mission</h2>
     <p>Our mission is to empower tech professionals by providing them with the tools and resources they need to
         succeed in their careers. We aim to create a seamless and efficient job search process, enabling users to
         find opportunities that align with their skills and aspirations.</p>
-
+</div>
+<div class="container">
     <h2>Why Choose JobSearch?</h2>
     <ul>
         <li><strong>Specialized Focus</strong><br>
@@ -97,6 +102,5 @@ color: #000;
             your career.</li>
     </ul>
 </div>
-
 
 {% endblock %}
