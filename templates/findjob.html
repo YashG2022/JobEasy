@@ -106,8 +106,10 @@ main{
   }
 
   .card p {
-    position: absolute;
+    position: relative;
     z-index: 10;
+    margin: 0; /* Removes default margin to prevent shifting */
+    text-align: center; /* Centers text within the p element */
   }
 </style>
 {% endblock %}
