@@ -8,8 +8,12 @@
     <title>{% block title %} default {% endblock %}</title>
     <style>
         header {
-            background-color: #333;
-            color: white;
+            background: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            color: black;
             padding: 10px 0;
             position: fixed;
             /* Make the header fixed */
@@ -31,7 +35,7 @@
         }
 
         .navbar-logo a {
-            color: #fff;
+            color: black;
             text-decoration: none;
             font-size: 24px;
             font-weight: bold;
@@ -49,11 +53,11 @@
         }
 
         .fancy {
-            background-color: #333;
+            background-color: white;
             border: 2px solid black;
             border-radius: 0;
             box-sizing: border-box;
-            color: white;
+            color: black;
             /* Set initial text color to white */
             cursor: pointer;
             display: inline-block;
@@ -94,7 +98,7 @@
             transition: all 0.3s ease-in-out;
             text-transform: uppercase;
             text-decoration: none;
-            color: white;
+            color: black;
             /* Set initial text color to white */
         }
 

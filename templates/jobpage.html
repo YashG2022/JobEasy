@@ -1,0 +1,184 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block css %}
+<style>
+    body {
+        font-family: 'Roboto Mono', monospace;
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 100%;
+        --size: 80px;
+        /* control the size */
+        --color: #add8e6;
+
+        background: linear-gradient(to bottom,
+                transparent 0%,
+                transparent 40%,
+                #add8e6 41%,
+                #add8e6 60%,
+                transparent 61%,
+                transparent 100%),
+            linear-gradient(45deg,
+                #add8e6 25%,
+                transparent 25%,
+                transparent 50%,
+                #add8e6 50%,
+                #add8e6 75%,
+                transparent 75%,
+                transparent);
+        background-size: var(--size) var(--size);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: grid;
+        /* Use CSS Grid */
+        grid-template-columns: repeat(2, 1fr);
+        /* Two equal columns */
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 20px;
+        margin-top: 120px;
+    }
+
+    .card {
+        width: 730px;
+        height: 230px;
+        border-radius: 5px;
+        background-color: white;
+    }
+
+    button {
+        margin-top: 20px;
+        margin-left: 580px;
+        padding: 0.8em 1em;
+        outline: none;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        text-transform: uppercase;
+        background-color: #333;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 300;
+        font-size: 18px;
+        font-family: inherit;
+        z-index: 0;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+    }
+
+    button:hover {
+        animation: sh0 0.5s ease-in-out both;
+    }
+
+    @keyframes sh0 {
+        0% {
+            transform: rotate(0deg) translate3d(0, 0, 0);
+        }
+
+        25% {
+            transform: rotate(7deg) translate3d(0, 0, 0);
+        }
+
+        50% {
+            transform: rotate(-7deg) translate3d(0, 0, 0);
+        }
+
+        75% {
+            transform: rotate(1deg) translate3d(0, 0, 0);
+        }
+
+        100% {
+            transform: rotate(0deg) translate3d(0, 0, 0);
+        }
+    }
+
+    button:hover span {
+        animation: storm 0.7s ease-in-out both;
+        animation-delay: 0.06s;
+    }
+
+    button::before,
+    button::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0;
+        transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+        z-index: -1;
+        transform: translate(100%, -25%) translate3d(0, 0, 0);
+    }
+
+    button:hover::before,
+    button:hover::after {
+        opacity: 0.15;
+        transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+    }
+
+    button:hover::before {
+        transform: translate3d(50%, 0, 0) scale(0.9);
+    }
+
+    button:hover::after {
+        transform: translate(50%, 0) scale(1.1);
+    }
+
+    .verified-icon {
+        width: 20px;
+        /* Adjust the size of the icon */
+        height: 20px;
+        vertical-align: middle;
+        /* Align the icon with the text */
+    }
+
+    h1 {
+        text-decoration: underline;
+        font-size: 23px;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+        margin-left: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <div class="container">
+        {% for job in jobs %}
+        <div class="card">
+            <h1>{{ job.job_title }}</h1>
+            <h2>{{ job.company_name }}
+                <img src="{% static 'JobEasy/verified.png' %}" alt="Verified" class="verified-icon">
+            </h2>
+            <p>
+                {{ job.job_details }}
+            </p>
+            <button onclick="window.open('{{ job.job_link }}', '_blank');">
+                <span>Apply Now</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+{% endblock %}

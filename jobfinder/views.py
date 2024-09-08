@@ -50,29 +50,29 @@ from jobfinder.models import JobListing
 def softdev(request):
     jobs = JobListing.objects.filter(job_type="Software Developer")
     # Render the jobs to the template
-    return render(request, 'softdev.html', {'jobs': jobs})
+    return render(request, 'jobpage.html', {'jobs': jobs})
 
 
 @login_required(login_url='login')
 def uiux(request):
     jobs = JobListing.objects.filter(job_type="UI UX")
     # Render the jobs to the template
-    return render(request, 'uiux.html', {'jobs': jobs})
+    return render(request, 'jobpage.html', {'jobs': jobs})
 
 @login_required(login_url='login')
 def gd(request):
     jobs = JobListing.objects.filter(job_type="Graphic Designer")
     # Render the jobs to the template
-    return render(request, 'gd.html', {'jobs': jobs})
+    return render(request, 'jobpage.html', {'jobs': jobs})
 
 @login_required(login_url='login')
 def appdev(request):
     jobs = JobListing.objects.filter(job_type="App Developer")
     # Render the jobs to the template
-    return render(request, 'appdev.html', {'jobs': jobs})
+    return render(request, 'jobpage.html', {'jobs': jobs})
 
 @login_required(login_url='login')
 def aiml(request):
     jobs = JobListing.objects.filter(job_type="AI ML")
     # Render the jobs to the template
-    return render(request, 'aiml.html', {'jobs': jobs})
+    return render(request, 'jobpage.html', {'jobs': jobs})
