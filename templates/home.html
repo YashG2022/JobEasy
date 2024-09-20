@@ -5,7 +5,7 @@
   body, h1, p, ul {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto Mono', monospace;
     box-sizing: border-box; /* Include padding and border in the element's width and height */
   }
 
@@ -72,6 +72,14 @@
     margin-bottom: 20px;
     display: block; /* Ensures it takes full width and stacks vertically */
   }
+  a {
+    color: white; /* Set text color to white */
+    font-size: 36px; /* Set a larger font size like a heading */
+    font-weight: bold; /* Make it bold to resemble a heading */
+    text-decoration: none; /* Remove the default underline of the link */
+    display: block; /* Ensure it behaves like a block element */
+    margin-bottom: 10px; /* Add some space below the heading */
+}
 </style>
 {% endblock %}
 
@@ -80,25 +88,25 @@
   <main>
     <section id="find-jobs" class="section">
         <div class="content">
-            <h1>Find Your Dream Job</h1>
+            <a href="{% url 'findjob' %}">Find Your Dream Job</a>
             <p>Explore thousands of job listings from top companies.</p>
         </div>
     </section>
     <section id="chatbot" class="section">
         <div class="content">
-            <h1>ChatBot</h1>
+            <a href="{% url 'chatbot' %}">ChatBot</a>
             <p>Gain some expert advice from our AI Guru.</p>
         </div>
     </section>
     <section id="about-us" class="section">
       <div class="content">
-        <h1>About Us</h1>
+        <a href="{% url 'aboutus' %}">About Us</a>
         <p>Learn more about our mission and values.</p>
     </div>
     </section>
     <section id="our-team" class="section">
       <div class="content">
-        <h1>Our Team</h1>
+        <a href="{% url 'contactus' %}">Our Team</a>
         <p>Meet the people behind JobSearch.</p>
     </div>
     </section>

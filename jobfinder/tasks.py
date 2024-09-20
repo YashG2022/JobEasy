@@ -21,9 +21,10 @@ def job_loader():
             except Exception as e:
                 print(f"Failed to load jobs {e}")
             print(f"Current Hour: {current_hour}")
+            print("Sleeping for 2 hours...")
             time.sleep(7200)  # Sleep for 2 hours
         else:
-            print("Sleeping for 10 minutes")  # Debugging print
+            print("Sleeping for 10 minutes ... ")  # Debugging print
             time.sleep(600)  # Sleep for 10 minutes
 
 

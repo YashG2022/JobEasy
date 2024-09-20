@@ -1,31 +1,275 @@
 {% extends 'navbar.html' %}
-<!-- {% block title %} {% endblock %} -->
-{% block css %} 
+{% block css %}
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        width: 100%;
+        height: 100%;
+        --s: 200px;
+        /* control the size */
+        --c1: #1d1d1d;
+        --c2: #4e4f51;
+        --c3: #3c3c3c;
 
+        background: repeating-conic-gradient(from 30deg,
+                #0000 0 120deg,
+                var(--c3) 0 180deg) calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+            repeating-conic-gradient(from 30deg,
+                var(--c1) 0 60deg,
+                var(--c2) 0 120deg,
+                var(--c3) 0 180deg);
+        background-size: var(--s) calc(var(--s) * 0.577);
+        /* display: flex;
+        flex-direction: column; */
+        min-height: 100vh;
+        color: white;
+        font-family: 'Roboto Mono', monospace;
+        font-size: large;
+    }
+
+    html,
+    body {
+        overflow-x: hidden;
+        /* Prevents horizontal overflow for the whole page */
+        width: 100%;
+        /* Ensures the body doesn't exceed the viewport width */
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-x: hidden;
+        margin-top: 120px;
+        max-width: 100%;
+        overflow-y: auto;
+    }
+
+    .chat-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        /* Align items to the bottom */
+        overflow: auto;
+        padding: 20px;
+    }
+
+    .chat-box {
+        background-color: black;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        /* Allow full width */
+        max-height: none;
+        /* Allow full height */
+        overflow-y: auto;
+    }
+
+    .chat-item {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+
+    .chat-item.question {
+        background-color: black;
+        text-align: left;
+        margin-right: auto;
+        margin-left: auto;
+        width: 75%;
+    }
+
+    .chat-item.answer {
+        /* Dark mode colors and gradient */
+        background: #121212;
+        /* Fallback for browsers that don't support gradients */
+        background: linear-gradient(135deg,
+                #121212 25%,
+                #1a1a1a 25%,
+                #1a1a1a 50%,
+                #121212 50%,
+                #121212 75%,
+                #1a1a1a 75%,
+                #1a1a1a);
+        background-size: 40px 40px;
+
+        /* Animation */
+        animation: move 4s linear infinite;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+        /* white-space: pre-wrap; */
+        margin-right: auto;
+        margin-left: auto;
+        width: 75%;
+    }
+
+    @keyframes move {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 40px 40px;
+        }
+    }
+
+    .typing-effect {
+        display: inline-block;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        font-size: 16px;
+        position: relative;
+        /* Ensure the cursor stays relative to the text */
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1em;
+        background-color: #e34ba9;
+        animation: blink 12s infinite;
+        vertical-align: bottom;
+        margin-left: 2px;
+        position: absolute;
+        /* Ensure the cursor moves relative to the text */
+        animation: blink 1s infinite;
+        /* Correct the blinking speed to 1s */
+    }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+    h1 {
+        margin-left: 20px;
+    }
+
+    .input-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .input-container input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 16px;
+        background-color: rgb(54, 54, 54);
+        color: white;
+        margin-left: 100px;
+    }
+
+    .input-container .submit-btn {
+        --font-color: white;
+        --bg-color: black;
+        --main-color: #727171;
+        width: 120px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid var(--main-color);
+        background-color: var(--bg-color);
+        box-shadow: 4px 4px var(--main-color);
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--font-color);
+        cursor: pointer;
+    }
+
+    .input-container .submit-btn:active {
+        box-shadow: 0px 0px var(--main-color);
+        transform: translate(3px, 3px);
+    }
+</style>
 {% endblock %}
-{% block body %}
-<body>
-    <h1>Chatbot</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="question">Ask a question:</label><br>
-        <input type="text" id="question" name="question" required><br><br>
-        <input type="submit" value="Ask">
-    </form>
 
-    <h2>Previous Conversations:</h2>
-    {% if chats %}
+
+{% block body %}
+
+<body>
+    <div class="content">
+        <!-- <div class="chat-container"> -->
+        <!-- <div class="chat-box"> -->
+        <h1>Previous Conversations:</h1>
+        {% if chats %}
         <ul>
-            {% for chat in chats %}
-                <li>
-                    <strong>Question:</strong> {{ chat.question }}<br>
-                    <strong>Answer:</strong> {{ chat.answer }}<br>
-                    <small>Asked on: {{ chat.created_at }}</small>
-                </li>
+            {% for chat in chats|dictsortreversed:"created_at" %}
+            <li class="chat-item question">
+                <strong>Question:</strong> {{ chat.question }}<br>
+                <small class="ask">Asked on: {{ chat.created_at }}</small>
+            </li>
+            {% if forloop.first %}
+            <!-- Apply the typing effect only to the latest answer -->
+            <li class="chat-item answer">
+                <span id="typingEffect" class="typing-effect"><span class="cursor"></span></span>
+                <span id="fullAnswer" style="display: none;">{{ chat.answer }}</span>
+            </li>
+            {% else %}
+            <!-- Display previous answers normally -->
+            <li class="chat-item answer" style="white-space: pre-wrap;">{{ chat.answer }}</li>
+            {% endif %}
             {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <p>No conversations yet.</p>
-    {% endif %}
+        {% endif %}
+        <!-- </div> -->
+        <!-- </div> -->
+    </div>
+
+    <!-- Chat Form at the Bottom -->
+    <div class="chat-form">
+        <form method="POST" class="input-container">
+            {% csrf_token %}
+            <input type="text" id="question" name="question" placeholder="Type your question..." required>
+            <input type="submit" value="Ask" class="submit-btn">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fullAnswerText = document.getElementById('fullAnswer').innerText.trim();
+            const typingEffectElement = document.getElementById('typingEffect');
+            const cursorElement = typingEffectElement.querySelector('.cursor'); // Attach cursor to the typing effect
+
+            let charIndex = 0;
+            const typingSpeed = 20; // Typing speed in milliseconds
+
+            function typeCharacter() {
+                if (charIndex < fullAnswerText.length) {
+                    typingEffectElement.insertBefore(
+                        document.createTextNode(fullAnswerText[charIndex]),
+                        cursorElement // Insert text before the cursor
+                    );
+                    charIndex++;
+
+                    // Adjust typing speed to mimic a more human-like typing pattern
+                    setTimeout(typeCharacter, Math.random() * (typingSpeed / 2) + (typingSpeed / 2));
+                } else {
+                    // Hide the cursor after typing is complete
+                    cursorElement.style.display = 'none';
+                }
+            }
+
+            typeCharacter(); // Start the typing effect
+        });
+    </script>
 </body>
+{% endblock %}
+{% block footer %}
+{# No footer for this page #}
 {% endblock %}

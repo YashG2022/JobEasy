@@ -8,16 +8,23 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import os
 
 def selenium_init():
+    # Get the directory of the current file
+    current_dir = os.path.dirname(__file__)
+
+    # Construct the path to chromedriver.exe
+    chromedriver_path = os.path.join(current_dir, '..', 'chromedriver-win64', 'chromedriver.exe')
+
+    # If needed, convert to an absolute path
+    absolute_chromedriver_path = os.path.abspath(chromedriver_path)
     chrome_options = Options()
     # chrome_options.add_argument("--headless")  # Run in headless mode
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     # chrome_options.add_argument('--window-size=1920,1080')
-    service = Service(
-        r"C:\Users\Asus\Downloads\JobEasy\chromedriver-win64\chromedriver.exe")  # Update with your ChromeDriver path
+    service = Service(absolute_chromedriver_path)  # Update with your ChromeDriver path
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
@@ -145,7 +152,8 @@ def jobs(profile):
             job_type=profile,
             company_name=row['Company Name'],
             job_details=row['Job Details'],
-            job_link=row['Job Link']
+            job_link=row['Job Link'],
+            job_origin="Naukri",
         )
         for index, row in naukri_jobs.iterrows()
     ]

@@ -312,7 +312,8 @@ button:active {
     </div>
     <div>
       <h1>Have a Query?</h1>
-      <form action="/submit-query" method="post" class="query-form">
+      <form action="/contactus/" method="post" class="query-form">
+        {% csrf_token %}
         <input type="text" name="query" class="input" placeholder="Ask here :)">
         <br>
         <div class="b">

@@ -4,6 +4,7 @@ from authentication import views as authviews
 from jobfinder import views as finderviews
 from . import views as JobEasy
 from chatbot import views as chatbotviews
+from queries import views as queriesviews
 from jobfinder.tasks import start_background_job_loader
 
 start_background_job_loader()
@@ -28,5 +29,5 @@ urlpatterns = [
     path('home/',authviews.HomePage,name='home'),
     path('logout/',authviews.LogoutPage,name='logout'),
     path('aboutus/',JobEasy.aboutus,name='aboutus'),
-    path('contactus/',JobEasy.contactus,name='contactus'),
+    path('contactus/',queriesviews.contactus,name='contactus'),
 ]

@@ -53,7 +53,7 @@
         }
 
         .fancy {
-            background-color: white;
+            background-color: transparent;
             border: 2px solid black;
             border-radius: 0;
             box-sizing: border-box;
@@ -202,7 +202,7 @@
 
         <nav class="navbar">
             <div class="navbar-logo">
-                <a href="#">JobEasy</a>
+                <a href="{% url 'home' %}">JobEasy</a>
             </div>
             <ul class="navbar-menu">
                 <li><a class="fancy" href="{% url 'findjob' %}">
@@ -241,9 +241,11 @@
     </header>
     {% block body %} {% endblock %}
 
+    {% block footer %}
     <footer>
         <p>&copy; 2024 JobEasy. All Rights Reserved.</p>
     </footer>
+    {% endblock %}
 </body>
 
 </html>
