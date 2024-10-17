@@ -85,7 +85,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-new="postgresql://postgres:diNimDcjwrsIUxnfLckvemGCikMQFoEg@autorack.proxy.rlwy.net:50753/railway"
+new="postgresql://postgres:ZyAQInYJkzbpPAjmkcMGesbNsDkgOcYz@junction.proxy.rlwy.net:55393/railway"
 database_url=os.environ.get("DATABASES",new)
 
 # Password validation
