@@ -85,7 +85,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-new="postgresql://postgres:ZyAQInYJkzbpPAjmkcMGesbNsDkgOcYz@junction.proxy.rlwy.net:55393/railway"
+new="postgres://avnadmin:AVNS_lirfHeIQlmCgYj7Il8k@pg-36d69b48-rajdeepsinghrs07-9933.i.aivencloud.com:14133/defaultdb?sslmode=require"
 database_url=os.environ.get("DATABASES",new)
 
 # Password validation
